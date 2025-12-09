@@ -7,9 +7,11 @@ import io.github.Leiv.arquiteturaspring.montadora.Motor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/carros")
 public class TesteFabricaController {
 
     @Autowired
@@ -18,6 +20,6 @@ public class TesteFabricaController {
     @PostMapping
     public CarroStatus LigarCarro(@RequestBody Chave chave) {
         var carro = new HondaHRV(motor);
-        carro.darIgniçao(chave);
+        return carro.darIgniçao(chave);
     }
 }
