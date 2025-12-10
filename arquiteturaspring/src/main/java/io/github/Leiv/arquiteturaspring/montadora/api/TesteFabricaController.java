@@ -5,6 +5,7 @@ import io.github.Leiv.arquiteturaspring.montadora.Chave;
 import io.github.Leiv.arquiteturaspring.montadora.HondaHRV;
 import io.github.Leiv.arquiteturaspring.montadora.Motor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class TesteFabricaController {
 
     @Autowired
+    @Qualifier("motorEletrico")
     private Motor motor;
 
     @PostMapping
     public CarroStatus LigarCarro(@RequestBody Chave chave) {
         var carro = new HondaHRV(motor);
-        return carro.darIgniçao(chave);
+        return  carro.darIgniçao(chave);
     }
 }
