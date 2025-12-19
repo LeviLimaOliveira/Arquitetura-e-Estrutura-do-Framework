@@ -3,10 +3,22 @@ package io.github.Leiv.arquiteturaspring;
 import io.github.Leiv.arquiteturaspring.todos.TodoEntity;
 import io.github.Leiv.arquiteturaspring.todos.TodoValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
+// singleton
 @Component
+@Scope(BeanDefinition.SCOPE_SINGLETON)
+@Scope(WebApplicationContext.SCOPE_APPLICATION)
+//@Scope("singleton")
+//@Scope("request")
+//@Scope("sessiion")
+//@Scope("application")
 public class BeanGerenciado {
+
+    private String idUsuarioLogado;
 
     @Autowired
     private TodoValidator validator;
